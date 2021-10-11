@@ -10,18 +10,24 @@ import service.Validator;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(urlPatterns = "/form")
+@WebServlet(name = "servlet", urlPatterns = "/form")
 public class CustomServlet extends HttpServlet {
+
+    public static final String NAME_PARAM = "name";
+    public static final String PHONE_PARAM = "phone";
+    public static final String EMAIL_PARAM = "email";
+    public static final String ERROR_MESSAGE = "Insert error";
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
-        String firstName = req.getParameter("name");
-        String lastName = req.getParameter("phone");
-        String email = req.getParameter("email");
+        String firstName = req.getParameter(NAME_PARAM);
+        String lastName = req.getParameter(PHONE_PARAM);
+        String email = req.getParameter(EMAIL_PARAM);
         if (Validator.validate(firstName, lastName, email)) {
             out.println(firstName + " " + lastName + " " + email);
         } else {
-            throw new NullPointerException();
+            out.println(ERROR_MESSAGE);
         }
     }
 }

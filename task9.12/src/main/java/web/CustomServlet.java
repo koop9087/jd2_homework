@@ -12,7 +12,6 @@ import java.io.IOException;
 
 @WebServlet(name = "customServlet", urlPatterns = "/image")
 public class CustomServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
     int count = 0;
 
     @Override
