@@ -46,7 +46,7 @@
                             <username>root</username>
                             <password>Root</password>
                             <driver>com.mysql.cj.jdbc.Driver</driver>
-                            <changeLogFile>src/main/resources/changelog-parking.xml</changeLogFile>
+                            <changeLogFile>src/main/resources/changelog-task2_4.xml</changeLogFile>
                         </configuration>
                     </execution>
                 </executions>
