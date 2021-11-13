@@ -1,11 +1,13 @@
 package pojos;
 
 import lombok.*;
+import service.StateListenerService;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@EntityListeners(StateListenerService.class)
 @Table(name = "persons")
 public class Person implements Serializable {
     @Id
