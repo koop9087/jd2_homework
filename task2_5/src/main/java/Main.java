@@ -1,13 +1,13 @@
 import data.DataSource;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class Main {
-   //private static final String URL = "jdbc:mysql://localhost:3306/task2_5?serverTimezone=UTC";
-   //private static final String USER = "root";
-   //private static final String PASSWORD = "Root";
    protected static DataSource dataSource;
-    //Запуск программы с помощью java -classpath d:\work\jd2_homework\task2_5\target\classes;c:\Users\home\.m2\repository\mysql\mysql-connector-java\8.0.26\mysql-connector-java-8.0.26.jar Main 2021-10-12 4 5 1`
+
+    //Запуск программы с помощью java -classpath d:\work\jd2_homework\task2_5\target\classes;c:\Users\home\.m2\repository\mysql\mysql-connector-java\8.0.26\mysql-connector-java-8.0.26.jar Main 2021-10-12 4 5 1
     public static void main(String... args) {
         String argDate = args[0];
         String argReceiver = args[1];
@@ -17,7 +17,7 @@ public class Main {
         String argNum = args[3];
         int numReceiver = Integer.parseInt(argNum);
         try {
-            dataSource = new DataSource();
+            dataSource = new DataSource(false);
             Statement statement = dataSource.getConnection().createStatement();
             String template = "INSERT INTO task2_5.expenses (num, paydate, receiver, value) \n " +
                     "VALUES (?, ?, ?, ?)";

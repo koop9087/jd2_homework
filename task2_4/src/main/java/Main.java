@@ -1,6 +1,8 @@
 import data.DataSource;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class Main {
     protected static DataSource dataSource;
@@ -14,7 +16,7 @@ public class Main {
         String argNum = args[3];
         int numReceiver = Integer.parseInt(argNum);
         try {
-            dataSource = new DataSource();
+            dataSource = new DataSource(false);
             Statement statement = dataSource.getConnection().createStatement();
             String dateQuery = "('" + argDate + "'" + "," + newReceiver + "," + valueArg + "," + numReceiver + ")";
             String query = "INSERT INTO task2_4.expenses (paydate, receiver, value, num) \n" +
